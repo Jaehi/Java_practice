@@ -4,7 +4,7 @@ class Calculator1 {
     static double PI = 3.14;
     int first,second;
 
-    public void setOprands(int first, int second){
+    public Calculator1(int first,int second){
         this.first = first;
         this.second = second;
     }
@@ -19,7 +19,10 @@ class Calculator1 {
 
 public class CalculatorDemo1 {
     public static void main(String[] args) {
-        Calculator1 c1 = new Calculator1();
+        Calculator1 c1 = new Calculator1(10,20);
+
+        c1.sum();
+        c1.avg();
 
         System.out.println(c1.PI);
         System.out.println(Calculator1.PI);
