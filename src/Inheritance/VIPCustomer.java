@@ -28,4 +28,9 @@ public class VIPCustomer extends Customer{
     public int getAgentID() {
         return agentID;
     }
+
+    @Override
+    public String showCustomerInfo() {
+        return super.showCustomerInfo() + " 고객님의 상담사 ID는 " + agentID +  " 입니다.";
+    }
 }
