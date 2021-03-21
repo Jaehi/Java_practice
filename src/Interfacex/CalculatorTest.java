@@ -9,5 +9,9 @@ public class CalculatorTest {
          CompleteCalculator completeCalculator = new CompleteCalculator();
         System.out.println(calc.div(num,num2));
         completeCalculator.showInfo();
+
+        int[] arr = {1,2,3,4,5};
+        int sum = Calc.total(arr);
+        System.out.println(sum);
     }
 }
