@@ -1,10 +1,15 @@
 package Collection;
 
 import java.util.Collection;
+import java.util.Comparator;
 
-public class Member {
+public class Member implements Comparable<Member>, Comparator<Member> {
     private int memberID;
     private String memberName;
+
+    public Member(){
+
+    }
 
     public Member(int memberID , String memberName){
         this.memberID = memberID;
@@ -32,7 +37,6 @@ public class Member {
         return  memberName + " 회원님의 아이디는 " + memberID + " 입니다.";
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (o instanceof Member){
@@ -47,5 +51,15 @@ public class Member {
     @Override
     public int hashCode() {
         return memberID;
+    }
+
+    @Override
+    public int compareTo(Member member) {
+        return (this.memberName.compareTo(member.memberName)*(-1));
+    }
+
+    @Override
+    public int compare(Member o1, Member o2) {
+        return (o1.memberID - o2.memberID) ;
     }
 }
