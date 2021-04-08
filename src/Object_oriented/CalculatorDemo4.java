@@ -17,12 +17,12 @@ class Calculator {
 
 public class CalculatorDemo4 {
     public static void main(String[] args) {
-        Calculator1 c1 = new Calculator1();
+        Calculator c1 = new Calculator();
         c1.setOprands(10,20);
         c1.sum();
         c1.avg();
 
-        Calculator1 c2 = new Calculator1();
+        Calculator c2 = new Calculator();
         c2.setOprands(30,40);
         c2.sum();
         c2.avg();

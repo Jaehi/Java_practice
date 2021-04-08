@@ -18,6 +18,7 @@ public class TreeDPrinterTest {
 //        printer2.setMaterial(new Water());
 //        Water water = printer2.getMaterial();
 //        System.out.println(water.toString());
+
         printer.printing();
         printer1.printing();
 

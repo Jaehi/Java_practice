@@ -12,7 +12,7 @@ public class TwoDimension {
                 System.out.println(ss[i][j]);
             }
 
-
         }
+        System.out.println(ss.hashCode());
     }
 }
