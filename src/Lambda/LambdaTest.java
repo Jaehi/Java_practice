@@ -19,6 +19,6 @@ public class LambdaTest {
         lambda.showString("hc");
     }
     public static PrintString returnPrint(){
-        return s -> System.out.println(s + "ge");
+        return s -> System.out.println(s + "rud");
     }
 }
