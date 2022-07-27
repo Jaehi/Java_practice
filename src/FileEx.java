@@ -7,21 +7,25 @@ public class FileEx {
         File first_file = new File(path);
         File[] directory = first_file.listFiles();
 
-        for(int i = 0; i < directory.length; i++) {
+        if(directory != null) {
+            for(int i = 0; i < directory.length; i++) {
 
-            File file = directory[i];
+                File file = directory[i];
 
-            if(file.isDirectory()) {
+                if(file.isDirectory()) {
 
-                searchFile(file.getPath(),txt_file,file_name);
+                    searchFile(file.getPath(),txt_file,file_name);
 
-            }else {
+                }else {
 
-                if(file.getPath().contains(file_name) && file.getPath().contains(".txt") ) {
+                    if(file.getPath().contains(file_name) && file.getPath().contains(".txt") ) {
 
-                    txt_file.add(file.getPath());
+                        txt_file.add(file.getPath());
+                    }
                 }
             }
+        }else {
+            System.out.println("디렉토리에 뭐가 업소용 ");
         }
     }
 
@@ -55,14 +59,17 @@ public class FileEx {
         try {
             writer = new BufferedWriter(new OutputStreamWriter(System.out));
             if(txt_file.size() == 1) {
+
                 writer.write("파일 경로 : " + txt_file.get(0));
                 writer.newLine();
                 reader = new BufferedReader(new FileReader(txt_file.get(0)));
                 content = reader.readLine();
                 writer.write("파일 내용 : " + content);
-
+                reader.close();
             }else if(txt_file.size() > 1){
+
                 for(int i = 0; i < txt_file.size(); i++) {
+
                     writer.write("파일 경로 - " + i +  " : " + txt_file.get(i));
                     writer.newLine();
                     reader = new BufferedReader(new FileReader(txt_file.get(i)));
@@ -71,11 +78,11 @@ public class FileEx {
                         writer.write(" " + content);
                     }
                     writer.newLine();
+                    reader.close();
                 }
             }else {
                 System.out.println("파일이 업소용 ");
             }
-            reader.close();
             writer.flush();
             writer.close();
 
