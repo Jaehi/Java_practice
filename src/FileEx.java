@@ -4,10 +4,12 @@ import java.util.*;
 public class FileEx {
 
     public static void searchFile(String path,ArrayList<String> txt_file,String file_name) {
+
         File first_file = new File(path);
         File[] directory = first_file.listFiles();
 
         if(directory != null) {
+
             for(int i = 0; i < directory.length; i++) {
 
                 File file = directory[i];
@@ -25,7 +27,9 @@ public class FileEx {
                 }
             }
         }else {
+
             System.out.println("디렉토리에 뭐가 업소용 ");
+
         }
     }
 
@@ -38,26 +42,36 @@ public class FileEx {
         BufferedWriter writer = null;
 
         try {
+
             reader = new BufferedReader(new InputStreamReader(System.in));
             String file_name = reader.readLine();
             reader.close();
+            reader = null;
             searchFile(BASE_PATH,txt_file,file_name);
 
         }catch(Exception e) {
+
             System.out.println(e);
 
         }finally {
-            try {
-                if(reader != null) {
+
+
+            if(reader != null) {
+                try {
+
                     reader.close();
+                }catch(Exception e) {
+
+                    System.out.println(e);
                 }
-            }catch(Exception e) {
-                System.out.println(e);
+
             }
         }
 
         try {
+
             writer = new BufferedWriter(new OutputStreamWriter(System.out));
+
             if(txt_file.size() == 1) {
 
                 writer.write("파일 경로 : " + txt_file.get(0));
@@ -66,6 +80,8 @@ public class FileEx {
                 content = reader.readLine();
                 writer.write("파일 내용 : " + content);
                 reader.close();
+                reader = null;
+
             }else if(txt_file.size() > 1){
 
                 for(int i = 0; i < txt_file.size(); i++) {
@@ -74,34 +90,50 @@ public class FileEx {
                     writer.newLine();
                     reader = new BufferedReader(new FileReader(txt_file.get(i)));
                     writer.write("파일 내용 - " + i +  " : ");
+
                     while((content = reader.readLine()) != null) {
                         writer.write(" " + content);
                     }
+
                     writer.newLine();
                     reader.close();
+                    reader = null;
                 }
             }else {
-                System.out.println("파일이 업소용 ");
+
+                System.out.println("파일이 없  ");
             }
+
             writer.flush();
             writer.close();
+            writer = null;
 
         }catch(Exception e) {
+
             System.out.println(e);
+
         }finally {
-            try {
-                if(writer != null) {
+
+            if(writer != null) {
+                try {
                     writer.flush();
                     writer.close();
+                }catch(Exception e){
+
+                    System.out.println(e);
                 }
-                if(reader != null) {
+
+            }
+
+            if(reader != null) {
+                try {
                     reader.close();
+                }catch(Exception e){
+
+                    System.out.println(e);
                 }
-            }catch(Exception e){
-                System.out.println(e);
+
             }
         }
-
-
     }
 }
